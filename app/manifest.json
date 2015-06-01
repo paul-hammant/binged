@@ -16,8 +16,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "https://github.com/*/whack_a_mole_angular/edit/gh-pages/moleTable.json"
       ],
       "css": [
         "bower_components/angular/angular-csp.css",
@@ -27,14 +26,14 @@
         "bower_components/angular/angular.min.js",
         "scripts/contentscript.js"
       ],
-      "html": [ "templates/bing.html" ],
+      "html": [ "templates/molePanel.html" ],
       "run_at": "document_end",
       "all_frames": false
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
 "web_accessible_resources": [
-  "templates/bing.html",
+  "templates/molePanel.html",
   "bower_components/angular/*"
 ]
 }

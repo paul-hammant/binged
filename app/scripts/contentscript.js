@@ -2,30 +2,34 @@
 
 window.addEventListener("load", function() {
   var app = angular.module('Binged', []);
-
+    console.log("heloo");
   var html = document.querySelector('html');
   html.setAttribute('ng-app', '');
   html.setAttribute('ng-csp', '');
 
-  var viewport = document.getElementById('viewport');
-  viewport.setAttribute('ng-controller', 'MainController');
+  var jsRepoPjaxContainer = document.getElementById('js-repo-pjax-container');
+    jsRepoPjaxContainer.setAttribute('ng-controller', 'MainController');
   app.controller('MainController', function ($scope) {});
 
-  var autoCompleteWin = document.querySelector('.gssb_e');
-  angular.element(autoCompleteWin).remove();
+    console.log("jsRepoPjaxContainer done");
 
-  var input = document.getElementById('lst-ib');
-  input.setAttribute('ng-model', 'search');
 
-  var myDirective = document.createElement('div');
+    var blobContents = document.getElementById('blob_contents');
+    blobContents.setAttribute('ng-model', 'moles');
+
+    console.log("moles done");
+
+    var myDirective = document.createElement('div');
   myDirective.setAttribute('my-directive', '');
-  document.querySelector('.jsb center').appendChild(myDirective);
+  document.querySelector('.file-commit-form').appendChild(myDirective);
 
-  app.directive('myDirective', [ '$sce', function($sce) {
+    console.log("appended");
+
+    app.directive('myDirective', [ '$sce', function($sce) {
     return {
       restrict: 'EA',
       replace: true,
-      templateUrl: $sce.trustAsResourceUrl(chrome.extension.getURL('templates/bing.html'))
+      templateUrl: $sce.trustAsResourceUrl(chrome.extension.getURL('templates/molePanel.html'))
     };
   }]);
 
