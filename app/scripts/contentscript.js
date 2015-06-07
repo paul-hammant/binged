@@ -7,7 +7,7 @@ window.addEventListener("load", function() {
   html.setAttribute('ng-csp', '');
 
   var jsRepoPjaxContainer = document.getElementById('js-repo-pjax-container');
-    jsRepoPjaxContainer.setAttribute('ng-controller', 'MainController');
+  jsRepoPjaxContainer.setAttribute('ng-controller', 'MainController');
   app.controller('MainController', function ($scope) {
 
       $scope.goInteractive = function() {
