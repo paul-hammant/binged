@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "binged",
+    "message": "MoleTable JSON Editor",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "Add a 'Search with Bing' button to Google search page",
+    "message": "Augments a Github editor page with a smarter editor - only for molesTable.json though",
     "description": "The description of the application"
   }
 }

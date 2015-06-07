@@ -26,7 +26,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         manifest: grunt.file.readJSON('app/manifest.json'),
-        
+
         watch: {
             options: {
                 spawn: false
@@ -284,7 +284,7 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: 'package/binged<%= manifest.version %>.zip'
+                    archive: 'package/molesEditor<%= manifest.version %>.zip'
                 },
                 files: [{
                     expand: true,

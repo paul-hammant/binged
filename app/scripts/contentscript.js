@@ -1,29 +1,35 @@
 'use strict';
 
 window.addEventListener("load", function() {
-  var app = angular.module('Binged', []);
-    console.log("heloo");
+  var app = angular.module('MoleEditor', []);
   var html = document.querySelector('html');
   html.setAttribute('ng-app', '');
   html.setAttribute('ng-csp', '');
 
   var jsRepoPjaxContainer = document.getElementById('js-repo-pjax-container');
     jsRepoPjaxContainer.setAttribute('ng-controller', 'MainController');
-  app.controller('MainController', function ($scope) {});
+  app.controller('MainController', function ($scope) {
 
-    console.log("jsRepoPjaxContainer done");
+      $scope.goInteractive = function() {
+          $scope.moles = JSON.parse(document.getElementById('blob_contents').value);
+          $scope.$watch('moles', function(newValue, oldValue) {
+              if (angular.toJson(oldValue) !== angular.toJson(newValue)) {
+                  document.querySelector('.js-blob-submit').removeAttribute("disabled");
+                  document.getElementById('blob_contents').value = angular.toJson($scope.moles, true);
+              }
+          }, true);
+          $scope.interactive = true;
+      };
+  });
 
-
-    var blobContents = document.getElementById('blob_contents');
-    blobContents.setAttribute('ng-model', 'moles');
-
-    console.log("moles done");
+    document.querySelector('.js-code-editor').setAttribute("ng-hide", "interactive");
 
     var myDirective = document.createElement('div');
-  myDirective.setAttribute('my-directive', '');
-  document.querySelector('.file-commit-form').appendChild(myDirective);
+    myDirective.setAttribute('my-directive', '');
+    var breadcrumb = document.querySelector('.breadcrumb');
+    breadcrumb.appendChild(myDirective);
 
-    console.log("appended");
+    console.log("directive added");
 
     app.directive('myDirective', [ '$sce', function($sce) {
     return {
@@ -33,5 +39,5 @@ window.addEventListener("load", function() {
     };
   }]);
 
-  angular.bootstrap(html, ['Binged'], []);
+  angular.bootstrap(html, ['MoleEditor'], []);
 });
